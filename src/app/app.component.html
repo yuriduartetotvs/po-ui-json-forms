@@ -1,6 +1,53 @@
-<formly-form 
-              [form]="form" 
-              [fields]="fields" 
-              [model]="model" 
-              [options]="options">
-            </formly-form>
+<div class="po-container">
+  <po-page-default p-title="JSON PO-UI Form Generator">
+    
+    <!-- Status -->
+    <div class="po-row">
+      <div class="po-md-12">
+        <po-info 
+          p-label="Status" 
+          p-value="Testando integração ngx-formly + PO-UI Input!">
+        </po-info>
+      </div>
+    </div>
+
+    <!-- Formulário com ngx-formly + PO-UI -->
+    <div class="po-row po-mt-2">
+      <div class="po-md-8">
+        <po-widget p-title="Formulário com PO-UI Components">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            
+            
+            <div class="po-mt-2">
+              <po-button 
+                p-label="Enviar" 
+                [p-disabled]="!form.valid"
+                (p-click)="onSubmit()">
+              </po-button>
+            </div>
+          </form>
+        </po-widget>
+      </div>
+
+      <!-- Dados -->
+      <div class="po-md-4">
+        <po-widget p-title="Dados do Formulário">
+          <div *ngIf="Object.keys(model).length > 0; else noData">
+            <pre>{{ model | json }}</pre>
+          </div>
+          <ng-template #noData>
+            <p>Preencha o formulário para ver os dados aqui.</p>
+          </ng-template>
+        </po-widget>
+        
+        <po-widget p-title="Status do Form" class="po-mt-2">
+          <po-info 
+            p-label="Válido" 
+            [p-value]="form.valid ? 'Sim' : 'Não'">
+          </po-info>
+        </po-widget>
+      </div>
+    </div>
+
+  </po-page-default>
+</div>
