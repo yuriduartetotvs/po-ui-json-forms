@@ -16,7 +16,12 @@
       <div class="po-md-8">
         <po-widget p-title="Formulário com PO-UI Components">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            
+            <formly-form 
+              [form]="form" 
+              [fields]="fields" 
+              [model]="model" 
+              [options]="options">
+            </formly-form>
             
             <div class="po-mt-2">
               <po-button 

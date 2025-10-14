@@ -159,6 +159,101 @@ export class FormConfigService {
           }
         }
       ]
+    },
+    {
+      name: 'Agendamento de Reunião',
+      description: 'Formulário para agendamento com novos componentes',
+      fields: [
+        {
+          key: 'titulo',
+          type: 'po-input',
+          props: {
+            label: 'Título da Reunião',
+            placeholder: 'Digite o título da reunião',
+            required: true
+          }
+        },
+        {
+          key: 'data',
+          type: 'po-datepicker',
+          props: {
+            label: 'Data da Reunião',
+            required: true,
+            format: 'dd/MM/yyyy'
+          }
+        },
+        {
+          key: 'periodo_ferias',
+          type: 'po-datepicker-range',
+          props: {
+            label: 'Período de Férias',
+            required: false,
+            clean: true,
+            locale: 'pt-BR',
+            help: 'Selecione o período de férias desejado'
+          }
+        },
+        {
+          key: 'participantes',
+          type: 'po-multiselect',
+          props: {
+            label: 'Participantes',
+            placeholder: 'Selecione os participantes',
+            required: true,
+            options: [
+              { label: 'João Silva', value: 'joao.silva' },
+              { label: 'Maria Santos', value: 'maria.santos' },
+              { label: 'Pedro Oliveira', value: 'pedro.oliveira' },
+              { label: 'Ana Costa', value: 'ana.costa' },
+              { label: 'Carlos Ferreira', value: 'carlos.ferreira' }
+            ],
+            sort: true,
+            hideSearch: false,
+            placeholderSearch: 'Buscar participante...',
+            autoHeight: true
+          }
+        },
+        {
+          key: 'sala',
+          type: 'po-lookup',
+          props: {
+            label: 'Sala de Reunião',
+            placeholder: 'Buscar sala',
+            required: true,
+            fieldLabel: 'nome',
+            fieldValue: 'id',
+            columns: [
+              { property: 'id', label: 'ID' },
+              { property: 'nome', label: 'Nome da Sala' },
+              { property: 'capacidade', label: 'Capacidade' }
+            ],
+            autoHeight: true,
+            infiniteScroll: true,
+            clean: true
+          }
+        },
+        {
+          key: 'notificar',
+          type: 'po-switch',
+          props: {
+            label: 'Enviar notificações',
+            labelOn: 'Sim',
+            labelOff: 'Não',
+            formatModel: true,
+            hideLabelStatus: false,
+            labelPosition: 'right'
+          }
+        },
+        {
+          key: 'observacoes',
+          type: 'po-textarea',
+          props: {
+            label: 'Observações',
+            placeholder: 'Observações adicionais...',
+            rows: 3
+          }
+        }
+      ]
     }
   ];
 
@@ -249,6 +344,18 @@ export class FormConfigService {
         props: ['label', 'placeholder', 'required', 'disabled', 'readonly', 'format', 'minDate', 'maxDate']
       },
       {
+        type: 'po-datepicker-range',
+        name: 'Seletor de Período',
+        description: 'Campo para seleção de período entre datas',
+        props: [
+          'label', 'required', 'disabled', 'readonly', 'help', 'additionalHelpTooltip',
+          'appendInBody', 'autoFocus', 'clean', 'endDate', 'errorLimit', 'fieldErrorMessage',
+          'labelTextWrap', 'literals', 'locale', 'maxDate', 'minDate', 'noAutocomplete',
+          'optional', 'helper', 'showRequired', 'size', 'startDate', 'onAdditionalHelp',
+          'onKeydown', 'onChange'
+        ]
+      },
+      {
         type: 'po-checkbox-group',
         name: 'Grupo de Checkboxes',
         description: 'Grupo de opções de múltipla escolha',
@@ -259,6 +366,46 @@ export class FormConfigService {
         name: 'Grupo de Radio Buttons',
         description: 'Grupo de opções de escolha única',
         props: ['label', 'required', 'disabled', 'readonly', 'options', 'columns']
+      },
+      {
+        type: 'po-lookup',
+        name: 'Lookup',
+        description: 'Campo de busca com modal de seleção',
+        props: [
+          'label', 'placeholder', 'required', 'disabled', 'help', 'columns', 
+          'fieldLabel', 'fieldValue', 'filterService', 'multiple', 'spacing',
+          'additionalHelpTooltip', 'advancedFilters', 'appendInBody', 'autoFocus',
+          'autoHeight', 'clean', 'errorLimit', 'fieldErrorMessage', 'fieldFormat',
+          'filterParams', 'hideColumnsManager', 'infiniteScroll', 'labelTextWrap',
+          'literals', 'name', 'noAutocomplete', 'optional', 'helper', 'showRequired',
+          'size', 'textWrap', 'virtualScroll', 'onAdditionalHelp', 'onChange',
+          'onChangeVisibleColumns', 'onRestoreColumnManager', 'onKeydown', 'onError', 'onSelected'
+        ]
+      },
+      {
+        type: 'po-multiselect',
+        name: 'Seleção Múltipla',
+        description: 'Campo para seleção de múltiplas opções',
+        props: [
+          'label', 'placeholder', 'required', 'disabled', 'help', 'options', 
+          'sort', 'hideSelectAll', 'literals', 'additionalHelpTooltip', 
+          'appendInBody', 'autoFocus', 'autoHeight', 'debounceTime', 'errorLimit',
+          'fieldErrorMessage', 'fieldLabel', 'fieldValue', 'filterMode', 
+          'filterService', 'hideSearch', 'labelTextWrap', 'listboxControlPosition',
+          'name', 'optional', 'placeholderSearch', 'helper', 'showRequired', 
+          'size', 'onAdditionalHelp', 'onBlur', 'onChange', 'onKeydown'
+        ]
+      },
+      {
+        type: 'po-switch',
+        name: 'Interruptor',
+        description: 'Campo de alternância (liga/desliga)',
+        props: [
+          'label', 'disabled', 'help', 'labelOff', 'labelOn', 'size',
+          'additionalHelpTooltip', 'appendInBody', 'errorLimit', 'fieldErrorMessage',
+          'formatModel', 'hideLabelStatus', 'invalidValue', 'labelPosition',
+          'labelTextWrap', 'name', 'helper', 'onAdditionalHelp', 'onChange', 'onKeydown'
+        ]
       }
     ];
   }

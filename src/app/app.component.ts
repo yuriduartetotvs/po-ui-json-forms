@@ -185,6 +185,56 @@ export class AppComponent {
         required: true,
         description: 'É obrigatório aceitar os termos para continuar'
       }
+    },
+    {
+      key: 'periodoFerias',
+      type: 'po-datepicker-range',
+      props: {
+        label: 'Período de Férias',
+        required: false,
+        description: 'Selecione o período desejado para suas férias'
+      }
+    },
+    {
+      key: 'empresa',
+      type: 'po-lookup',
+      props: {
+        label: 'Empresa',
+        required: false,
+        service: 'https://po-sample-api.onrender.com/v1/companies',
+        fieldLabel: 'name',
+        fieldValue: 'id',
+        description: 'Busque e selecione uma empresa'
+      }
+    },
+    {
+      key: 'tecnologias',
+      type: 'po-multiselect',
+      props: {
+        label: 'Tecnologias',
+        placeholder: 'Selecione as tecnologias que conhece',
+        options: [
+          { label: 'Angular', value: 'angular' },
+          { label: 'React', value: 'react' },
+          { label: 'Vue.js', value: 'vue' },
+          { label: 'Node.js', value: 'node' },
+          { label: 'Python', value: 'python' },
+          { label: 'Java', value: 'java' },
+          { label: 'C#', value: 'csharp' },
+          { label: 'JavaScript', value: 'javascript' },
+          { label: 'TypeScript', value: 'typescript' },
+          { label: 'PHP', value: 'php' }
+        ],
+        description: 'Selecione múltiplas tecnologias que você conhece'
+      }
+    },
+    {
+      key: 'notificacoes',
+      type: 'po-switch',
+      props: {
+        label: 'Ativar Notificações',
+        description: 'Ative para receber notificações push'
+      }
     }
   ];
 

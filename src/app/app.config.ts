@@ -11,10 +11,14 @@ import {
   FormlyFieldPoTextarea,
   FormlyFieldPoSelect,
   FormlyFieldPoDatepicker,
+  FormlyFieldPoDatepickerRange,
   FormlyFieldPoCheckboxGroup,
   FormlyFieldPoRadioGroup,
   FormlyFieldPoCombo,
-  FormlyFieldPoCheckbox
+  FormlyFieldPoCheckbox,
+  FormlyFieldPoLookup,
+  FormlyFieldPoMultiselect,
+  FormlyFieldPoSwitch
 } from './formly-types';
 
 export const appConfig: ApplicationConfig = {
@@ -32,10 +36,14 @@ export const appConfig: ApplicationConfig = {
           { name: 'po-textarea', component: FormlyFieldPoTextarea },
           { name: 'po-select', component: FormlyFieldPoSelect },
           { name: 'po-datepicker', component: FormlyFieldPoDatepicker },
+          { name: 'po-datepicker-range', component: FormlyFieldPoDatepickerRange },
           { name: 'po-checkbox-group', component: FormlyFieldPoCheckboxGroup },
           { name: 'po-radio-group', component: FormlyFieldPoRadioGroup },
           { name: 'po-combo', component: FormlyFieldPoCombo },
-          { name: 'po-checkbox', component: FormlyFieldPoCheckbox }
+          { name: 'po-checkbox', component: FormlyFieldPoCheckbox },
+          { name: 'po-lookup', component: FormlyFieldPoLookup },
+          { name: 'po-multiselect', component: FormlyFieldPoMultiselect },
+          { name: 'po-switch', component: FormlyFieldPoSwitch }
         ]
       })
     )
