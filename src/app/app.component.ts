@@ -196,18 +196,6 @@ export class AppComponent {
       }
     },
     {
-      key: 'empresa',
-      type: 'po-lookup',
-      props: {
-        label: 'Empresa',
-        required: false,
-        service: 'https://po-sample-api.onrender.com/v1/companies',
-        fieldLabel: 'name',
-        fieldValue: 'id',
-        description: 'Busque e selecione uma empresa'
-      }
-    },
-    {
       key: 'tecnologias',
       type: 'po-multiselect',
       props: {
