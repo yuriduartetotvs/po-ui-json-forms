@@ -36,7 +36,7 @@ export class AppComponent {
       props: {
         label: 'Sobrenome',
         placeholder: 'Digite seu sobrenome',
-        required: true
+        required: false
       }
     },
     {
